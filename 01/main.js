@@ -1,12 +1,12 @@
 const fs = require('fs')
 
-// // helper method
+// helper method
 const pipe = (...functions) => args => functions.reduce((arg, fn) => fn(arg), args)
 
-// // reducer
+// reducer
 const sumItems = (acc, item) => acc + item
 
-// // data transformations
+// data transformations
 const blankLineSplit = (string) => string.split(/\n\s*\n/)
 const splitAndParse = (stringArr) => stringArr.map(string => string.split('\n').map(x => parseInt(x)))
 const biggestSum = (twoDStringArr) => twoDStringArr.map(x => x.reduce(sumItems)).sort((a, b) => b - a)[0]
@@ -14,7 +14,7 @@ const biggestSum = (twoDStringArr) => twoDStringArr.map(x => x.reduce(sumItems))
 const reduceWithSum = (twoDStringArr) => twoDStringArr.map(arr => arr.reduce(sumItems))
 const sortSliceandSum = (numArr) => numArr.sort((a, b) => b - a).slice(0, 3).reduce(sumItems)
 
-// // composed functions
+// composed functions
 const largest = pipe(blankLineSplit, splitAndParse, biggestSum);
 const threeLargestSum = pipe(blankLineSplit, splitAndParse, reduceWithSum, sortSliceandSum)
 
