@@ -7,7 +7,7 @@ const pipe = (...functions) => args => functions.reduce((arg, fn) => fn(arg), ar
 const sumItems = (acc, item) => acc + parseInt(item)
 
 // data transformations
-const blankLineSplit = (string) => string.split(/\n\s*\n/)
+const blankLineSplit = (string) => string.trim().split(/\n\s*\n/)
 const newLineSplit = (stringArr) => stringArr.map(string => string.split('\n'))
 const reduceWithSum = (twoDStringArr) => twoDStringArr.map(arr => arr.reduce(sumItems, 0))
     // 01
